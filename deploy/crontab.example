@@ -1,0 +1,4 @@
+# Alternative to the long-running service: one cycle every 15 minutes, Mon-Fri, 09:15-15:30 IST.
+# Server timezone must be Asia/Kolkata (or adjust the hours).
+CRON_TZ=Asia/Kolkata
+*/15 9-15 * * 1-5 cd /opt/ClaudeUpBot && .venv/bin/python -m claudeupbot run-once >> data/cron.log 2>&1

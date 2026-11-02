@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claudeupbot"
+version = "0.1.0"
+description = "Regime-aware, wallet-only trading bot for Upstox with backtesting, paper trading and a Streamlit UI."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+ui = ["streamlit>=1.30"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+claudeupbot = "claudeupbot.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["claudeupbot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

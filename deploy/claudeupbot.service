@@ -1,0 +1,15 @@
+# systemd unit: runs the bot all day; it only trades during NSE market hours.
+# Install: sudo cp deploy/claudeupbot.service /etc/systemd/system/ && sudo systemctl enable --now claudeupbot
+[Unit]
+Description=ClaudeUpBot trading bot
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/ClaudeUpBot
+EnvironmentFile=/opt/ClaudeUpBot/.env
+ExecStart=/opt/ClaudeUpBot/.venv/bin/python -m claudeupbot run
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
